@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拼图游戏练习</title>
+</head>
+
+
+<body>
+
+<g style="--i:url(../graph/劳大.png)">
+
+    <!-- --i是一个变量存储着劳大.png这个路径 -->
+    <!-- gzab都是自定义的标签，思路是z是拼图块，a用来覆盖实现缺失，b就是有图片的块 -->
+    <z><a></a><b draggable="true"> </b></z>
+    <z><a></a><b draggable="true"> </b></z>
+    <z><a></a><b draggable="true"> </b></z>
+    <z><a></a><b draggable="true"> </b></z>
+    <z><a></a><b draggable="true"> </b></z>
+    <z><a></a><b draggable="true"> </b></z>
+    <z><a></a><b draggable="true"> </b></z>
+    <z><a></a><b draggable="true"> </b></z>
+    <z><a></a><b draggable="true"> </b></z>
+    <z><a></a><b draggable="true"> </b></z>
+    <z><a></a><b draggable="true"> </b></z>
+    <z><a></a><b draggable="true"> </b></z>
+    
+
+</g>
+<style>
+body
+html{
+    width: 100%;
+    height: 100%;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: linear-gradient(to right,#868f96 0%,#596164 100%);
+    color: #fff;
+}
+
+g{
+display: grid;
+max-width: 500px;
+border:1px solid #fff;
+margin:auto;
+grid-template-columns: repeat(4,1fr);
+
+}
+g::before{
+content: "原图";
+color:#fff;
+font-size: 25px;
+font-weight: bold;
+text-shadow: 0 0 2px #000,0 0 2px #000, 0 0 2px #000;
+position:fixed;
+top: 10px;
+left: 10px;
+width:300px;
+aspect-ratio: 1.77777;
+background: var(--i)0/100% 100%;
+display: grid;
+place-content: center;
+}
+z{
+aspect-ratio: 1.7777;
+outline:1px dashed;
+display: grid;
+position:relative;
+pointer-events: none;
+}
+a{
+width: 0;
+transition:0s 0.2s;
+pointer-events: initial;
+
+}
+b{
+position:absolute;
+inset:0;
+background: var(--i) 0/400% 300%;
+box-shadow:0 0 4px 1px rgba(0, 0, 0, 0.5);
+z-index:2;
+cursor:grab;
+pointer-events: initial;
+}
+z:nth-of-type(1) b {
+background-position: 0% 0%;
+transform: translate(150%,150%)rotate(68deg)translate(355%)
+rotate(-6deg);
+}
+z:nth-of-type(2) b {
+background-position: 33.333% 0%;
+transform: translate(150%,150%)rotate(68deg)translate(355%)
+rotate(-6deg);
+}
+z:nth-of-type(3) b {
+background-position: 66.666% 0%;
+transform: translate(150%,150%)rotate(68deg)translate(355%)
+rotate(-6deg);
+}
+z:nth-of-type(4) b {
+background-position: 100% 0%;
+transform: translate(150%,150%)rotate(68deg)translate(355%)
+rotate(-6deg);
+}
+z:nth-of-type(5) b {
+background-position: 0% 50%;
+transform: translate(150%,150%)rotate(68deg)translate(355%)
+rotate(-6deg);
+}
+z:nth-of-type(6) b {
+background-position: 33.333% 50%;
+transform: translate(150%,150%)rotate(68deg)translate(355%)
+rotate(-6deg);
+}
+z:nth-of-type(7) b {
+background-position: 66.666% 50%;
+transform: translate(150%,150%)rotate(68deg)translate(355%)
+rotate(-6deg);
+}
+z:nth-of-type(8) b {
+background-position: 100% 50%;
+transform: translate(150%,150%)rotate(68deg)translate(355%)
+rotate(-6deg);
+}
+z:nth-of-type(9) b {
+background-position: 0% 100%;
+transform: translate(150%,150%)rotate(68deg)translate(355%)
+rotate(-6deg);
+}
+z:nth-of-type(10) b {
+background-position: 33.333% 100%;
+transform: translate(150%,150%)rotate(68deg)translate(355%)
+rotate(-6deg);
+}
+z:nth-of-type(11) b {
+background-position: 66.666% 100%;
+transform: translate(150%,150%)rotate(68deg)translate(355%)
+rotate(-6deg);
+}
+z:nth-of-type(12) b {
+background-position: 100% 100%;
+transform: translate(150%,150%)rotate(68deg)translate(355%)
+rotate(-6deg);
+}
+
+z b{
+    transition: 9999s 9999s;
+}
+
+z:active a{
+    width :100%;
+    transition:0s;
+}
+z a:hover~b{
+    transform:translate(0);
+    box-shadow:none;
+    transition:0s;
+}
+
+
+</style>
+
+
+
+
+</body>
+</html>
