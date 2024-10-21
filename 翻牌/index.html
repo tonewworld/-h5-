@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card game</title>
+    <style>
+        * {
+            box-sizing: border-box;
+
+        }
+
+        html {
+
+            min-width: 100vm;
+            min-height: 100vh;
+        }
+
+        body {
+            margin: 0;
+            background: radial-gradient(#F15F66, #8f3b3f);
+        }
+
+        .game-title {
+            color: bisque;
+            text-align: center;
+            font-size: 4em;
+            font-weight: normal;
+        }
+
+        .game-container {
+
+            display: grid;
+            grid-template-columns: repeat(8, auto);
+            justify-content: center;
+            gap: 10px;
+            perspective: 500px;
+        }
+
+        .game-info-container {
+            grid-column: 1/-1;
+            display: flex;
+            justify-content: space-between;
+
+
+        }
+
+        .game-info {
+            color: rgb(24, 145, 145);
+            font-size: 3em;
+
+        }
+
+        .card {
+            position: relative;
+            height: 175px;
+            width: 125px;
+        }
+
+        .container {
+            position: relative;
+            height: 175px;
+            width: 125px;
+        }
+
+
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 12px;
+            border-width: 1px;
+            border-style: soild;
+            font-size: 7em;
+            backface-visibility: hidden;
+        }
+
+        .card.back {
+            background-color: black;
+            border-color: red;
+            transform: rotateY(0deg);
+        }
+
+        .card-front {
+
+            border-color: black;
+            transform: rotateY(180deg);
+        }
+
+        .wenwu {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="game-title">翻牌游戏</h1>
+    <div class="game-container">
+
+        <div class="game-info-container">
+
+
+            <div class="game-info">
+                时间：<span id="timeRemaining" class="time-remaining">50</span>
+            </div>
+            <div class="game-info">
+                点击：<span id="clickCount" class="click-count">0</span>
+            </div>
+        </div>
+
+
+        <div class="card" data-number="3" data-turn="back" onclick="handleClick(this)">
+            <div class="card-back card-face">
+                <img class="wenwu" src="./1.jpg">
+            </div>
+            <div class="card-front card-face">
+                <div data-number="3">
+                    <div><img src="./R-C.jpg"></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card" data-number="3" data-turn="back" onclick="handleClick(this)">
+            <div class="card-back card-face">
+                <img class="wenwu" src="./1.jpg">
+
+            </div>
+            <div class="card-front card-face">
+                <div data-number="3">
+                    <div>*</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card" data-number="5" data-turn="back" onclick="handleClick(this)">
+            <div class="card-back card-face">
+                <img class="wenwu" src="./1.jpg">
+
+            </div>
+            <div class="card-front card-face">
+                <div data-number="5">
+                    <div>*</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card" data-number="5" data-turn="back" onclick="handleClick(this)">
+            <div class="card-back card-face">
+                <img class="wenwu" src="./1.jpg">
+
+            </div>
+            <div class="card-front card-face">
+                <div data-number="5">
+                    <div>*</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        let timeRemaining = document.getElementById('timeRemaining')
+        let clickCount = document.getElementById('clickCount')
+        let time = 50;
+        let click = 0;
+        let cardsChosen = []
+        let cardsHidden = []
+        let arr = document.getElementsByClassName('card')
+
+
+        let t = setInterval(() => {
+            time--
+            timeRemaining.innerText = time
+
+            clickCount.innerText = click
+            if (time <= 0) {
+                clearInterval(t)
+                if (confirm('时间到了，游戏失败')) {
+                    location.reload()
+                }
+            }
+
+        }, 1000)
+        function handleClick(o) {
+
+            //翻牌
+            reversal(o)
+            addCard(o)
+
+            //隔一段时间比较
+            setTimeout(() => {
+                equals(cardsChosen)
+            }, 1000)
+
+
+            clickCount.innerText = click++
+
+
+
+        }
+        function equals(o) {
+            if (o.length >= 2) {
+                let one = o[0].getAttribute('data-number')
+                let two = o[1].getAttribute('data-number')
+                if (one == two) {
+                    o[0].style.visibility = 'hidden'
+                    o[1].style.visibility = 'hidden'
+                    cardsHidden.push(o[0])
+                    cardsHidden.push(o[1])
+                    if (cardsHidden.length == 4) {
+                        clearInterval(t)
+                        suiji()
+                        location.reload()
+                    }
+
+                }
+                else {
+                    o[0].setAttribute('data-turn', 'front')
+                    o[1].setAttribute('data-turn', 'front')
+                    reversal(o[0])
+                    reversal(o[1])
+                }
+
+            }
+            delCard(o)
+
+
+
+
+        }
+        function addCard(o) {
+            let turn = o.getAttribute('data-turn')
+            if (turn == 'front') {
+                if (cardsChosen.indexOf(o) == -1)
+                    cardsChosen.push(o)
+            }
+
+
+        }
+        function delCard(o) {
+
+            if (o.length >= 2) {
+                o.splice(0, 2)
+
+            }
+        }
+
+
+        function reversal(o) {
+            let turn = o.getAttribute('data-turn')
+            if (turn == 'back') {
+                o.children[0].style.transform = "rotateY(-180deg)"
+                o.children[1].style.transform = "rotateY(0deg)"
+                o.setAttribute('data-turn', 'front')
+
+            }
+            else {
+                o.children[0].style.transform = "rotateY(0deg)"
+                o.children[1].style.transform = "rotateY(180deg)"
+                o.setAttribute('data-turn', 'back')
+            }
+
+        }
+
+
+
+        function shuffleElements(elements) {
+            for (let i = elements.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [elements[i].style.position, elements[j].style.position] = [elements[j].style.position, elements[i].style.position];
+            }
+            return elements;
+
+        }
+
+
+        function suiji() {
+            let arr2 = [];
+            for (let i = 0; i < this.len - 1; i++) {
+                arr2.push(arr[i]);
+            }
+            arr = shuffleElements(arr2);
+
+            arr.forEach(card => {
+                gameContainer.appendChild(card);
+            });
+            cardsChosen = [];
+            cardsHidden = [];
+            click = 0;
+            time = 50;
+            clearInterval(t);
+            t = setInterval(() => {
+                time--;
+                timeRemaining.innerText = time;
+                clickCount.innerText = click;
+                if (time <= 0) {
+                    clearInterval(t);
+                    if (confirm('时间到了，游戏失败')) {
+                        location.reload();
+                    }
+                }
+            }, 1000);
+
+            // 重置所有卡片到背面朝上状态
+            arr.forEach(card => {
+                card.setAttribute('data-turn', 'back');
+                card.children[0].style.transform = "rotateY(0deg)";
+                card.children[1].style.transform = "rotateY(180deg)";
+                card.style.backfaceVisibility = "hidden";
+            });
+        }
+
+
+
+    </script>
+</body>
+
+</html>
