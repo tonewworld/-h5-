@@ -1,0 +1,28 @@
+body{
+    background-image: url(../graph/Exhibition\ background.jpg);
+}
+
+.lan{
+    top: 0px;
+    width: 100%;
+    height: 35px;
+}
+.lan a{
+    color: white;
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0px;
+    margin-right: 10px;
+}
+.lan .Exhibition {
+    color: red;
+    font-weight: bold;
+}
+
+.lan svg{
+    color:white;
+    width: 25px;
+    height: 35px;
+}
