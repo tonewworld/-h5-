@@ -1,0 +1,22 @@
+.header{
+    height: 20px;
+}
+.lan a{
+    color: black;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0px;
+    margin-right: 10px;
+    text-decoration: none;
+}
+.lan .Puzzle {
+    color: red;
+    font-weight: bold;
+}
+
+.lan svg{
+    width: 25px;
+    height: 35px;
+}
