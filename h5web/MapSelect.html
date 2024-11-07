@@ -58,52 +58,64 @@
             <div class="image-container">  
                   
                 <div class="image-container-block">
-                    <img src="清明上河图/清明上河图.jpg" alt="Original Image"> 
-                    <div class="image-container-block-button">
-                    <a href="清明上河图/清明上河图.html"><button class="image-container-block-button1">进入游戏</button></a>
-                    <a ><button class="image-container-block-button2">详情介绍</button></a>
+                    <div class="img-wrapper">
+                        <img src="清明上河图/清明上河图.jpg" alt="清明上河图">        
                     </div>
-                    
+                    <div class="image-title">清明上河图</div>
+                    <div class="image-container-block-button">
+                        <a href="清明上河图/清明上河图.html"><button class="image-container-block-button1">进入游戏</button></a>
+                        <button class="image-container-block-button2">详情介绍</button>
+                    </div>
                 </div>
-                <div class="image-container-block">
-                    <img src="graph/R-C.jpg" alt="Original Image"> 
-                    <div class="image-container-block-button">
-                    <button class="image-container-block-button1">进入游戏</button>
-                    <button class="image-container-block-button2">详情介绍</button>
+                <div class="image-container-block disabled">
+                    <div class="img-wrapper">
+                        <img src="graph/R-C.jpg" alt="待开发游戏"> 
                     </div>
-                    
+                    <div class="image-title">游戏名称2</div>
+                    <div class="image-container-block-button">
+                        <button class="image-container-block-button1" disabled>即将推出</button>
+                        <button class="image-container-block-button2" disabled>详情介绍</button>
+                    </div>
                 </div>
-                <div class="image-container-block">
-                    <img src="graph/R-C.jpg" alt="Original Image"> 
-                    <div class="image-container-block-button">
-                    <button class="image-container-block-button1">进入游戏</button>
-                    <button class="image-container-block-button2">详情介绍</button>
+                <div class="image-container-block disabled">
+                    <div class="img-wrapper">
+                        <img src="graph/R-C.jpg" alt="待开发游戏"> 
                     </div>
-                    
+                    <div class="image-title">游戏名称3</div>
+                    <div class="image-container-block-button">
+                        <button class="image-container-block-button1" disabled>即将推出</button>
+                        <button class="image-container-block-button2" disabled>详情介绍</button>
+                    </div>
                 </div>
-                <div class="image-container-block">
-                    <img src="graph/R-C.jpg" alt="Original Image"> 
-                    <div class="image-container-block-button">
-                    <button class="image-container-block-button1">进入游戏</button>
-                    <button class="image-container-block-button2">详情介绍</button>
+                <div class="image-container-block disabled">
+                    <div class="img-wrapper">
+                        <img src="graph/R-C.jpg" alt="待开发游戏"> 
                     </div>
-                    
+                    <div class="image-title">游戏名称4</div>
+                    <div class="image-container-block-button">
+                        <button class="image-container-block-button1" disabled>即将推出</button>
+                        <button class="image-container-block-button2" disabled>详情介绍</button>
+                    </div>
                 </div>
-                <div class="image-container-block">
-                    <img src="graph/R-C.jpg" alt="Original Image"> 
-                    <div class="image-container-block-button">
-                    <button class="image-container-block-button1">进入游戏</button>
-                    <button class="image-container-block-button2">详情介绍</button>
+                <div class="image-container-block disabled">
+                    <div class="img-wrapper">
+                        <img src="graph/R-C.jpg" alt="待开发游戏"> 
                     </div>
-                    
+                    <div class="image-title">游戏名称5</div>
+                    <div class="image-container-block-button">
+                        <button class="image-container-block-button1" disabled>即将推出</button>
+                        <button class="image-container-block-button2" disabled>详情介绍</button>
+                    </div>
                 </div>
-                <div class="image-container-block">
-                    <img src="graph/R-C.jpg" alt="Original Image"> 
-                    <div class="image-container-block-button">
-                    <button class="image-container-block-button1">进入游戏</button>
-                    <button class="image-container-block-button2">详情介绍</button>
+                <div class="image-container-block disabled">
+                    <div class="img-wrapper">
+                        <img src="graph/R-C.jpg" alt="待开发游戏"> 
                     </div>
-                    
+                    <div class="image-title">游戏名称6</div>
+                    <div class="image-container-block-button">
+                        <button class="image-container-block-button1" disabled>即将推出</button>
+                        <button class="image-container-block-button2" disabled>详情介绍</button>
+                    </div>
                 </div>
                 
 
@@ -114,6 +126,7 @@
         </div>  
     </div>  
 </body>  
+<div id="toast" class="toast"></div>
 <script >
     // 获取模态框
 var modal = document.getElementById("myModal");
@@ -140,5 +153,198 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+// 添加未实现游戏的提示功能
+const disabledButtons = document.querySelectorAll('.disabled button');
+const toast = document.getElementById('toast');
+
+disabledButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        showToast('该游戏正在开发中，敬请期待！');
+    });
+});
+
+function showToast(message) {
+    toast.textContent = message;
+    toast.style.display = 'block';
+    setTimeout(() => {
+        toast.style.display = 'none';
+    }, 3000);
+}
 </script>
+<style>
+.image-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 改为固定3列 */
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+/* 更新卡片布局 */
+.image-container-block {
+    position: relative;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    min-height: 550px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding-bottom: 20px; /* 添加底部内边距 */
+}
+
+/* 图片容器样式 */
+.image-container-block .img-wrapper {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    flex-shrink: 0; /* 防止图片被压缩 */
+}
+
+.image-container-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; /* 消除图片底部间隙 */
+}
+
+/* 标题样式调整 */
+.image-title {
+    padding: 1.5rem 1rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    margin: 0;
+    flex-shrink: 0;
+    background: transparent; /* 移除背景色 */
+    position: relative; /* 添加相对定位 */
+    z-index: 0; /* 确保标题在按钮容器上方 */
+}
+
+/* 按钮容器样式调整 */
+.image-container-block-button {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1rem 1.5rem;
+    justify-content: center;
+    margin-top: auto;
+    background: transparent; /* 移除白色背景 */
+    position: relative;
+    z-index: 1;
+}
+
+/* 按钮样式优化 */
+.image-container-block-button button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    font-weight: 500;
+    width: 140px;
+    height: 45px;
+    display: inline-flex; /* 改为inline-flex */
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap; /* 防止文字换行 */
+    text-align: center;
+}
+
+.image-container-block-button a {
+    text-decoration: none;
+    display: inline-flex; /* 确保链接也是inline-flex */
+    align-items: center;
+}
+
+/* 响应式设计优化 */
+@media (max-width: 1600px) {
+    .image-container {
+        grid-template-columns: repeat(2, 1fr); /* 中等屏幕显示2列 */
+    }
+    
+    .image-container-block {
+        max-width: 450px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .image-container {
+        grid-template-columns: repeat(1, 1fr); /* 小屏幕显示1列 */
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+    
+    .image-container-block {
+        min-height: 500px;
+    }
+    
+    .image-container-block .img-wrapper {
+        height: 300px;
+    }
+    
+    .image-title {
+        font-size: 1.4rem;
+    }
+    
+    .image-container-block-button button {
+        width: 140px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+}
+
+/* 确保小屏幕上的按钮和文字不会重叠 */
+@media (max-width: 375px) {
+    .image-container-block-button {
+        flex-direction: row; /* 保持水平排列 */
+        flex-wrap: wrap; /* 允许在需要时换行 */
+        gap: 1rem;
+    }
+    
+    .image-container-block-button button {
+        width: 130px; /* 稍微减小按钮宽度 */
+        font-size: 1rem;
+    }
+}
+
+/* 禁用状态的按钮样式 */
+.image-container-block.disabled button {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* 确保图片容器和标题之间没有间隙 */
+.img-wrapper {
+    margin-bottom: 0;
+}
+
+/* 添加一个渐变背景，让标题更容易看清 */
+.image-container-block {
+    background: linear-gradient(to bottom, 
+        white 0%,
+        white 100%);
+}
+
+/* Toast提示样式优化 */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    display: none;
+    z-index: 1000;
+}
+</style>
 </html>
