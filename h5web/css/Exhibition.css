@@ -1,0 +1,75 @@
+body{
+    background-image: url(../graph/shanshui.jpg);
+}
+
+.lan{
+    top: 0px;
+    width: 100%;
+    height: 35px;
+}
+.lan a{
+    color: white;
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0px;
+    margin-right: 10px;
+}
+.lan .Exhibition {
+    color: red;
+    font-weight: bold;
+}
+
+.lan svg{
+    color:white;
+    width: 25px;
+    height: 35px;
+}
+
+.exhibit {
+    width: 1200px;
+    height: 600px;
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .exhibit img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;  /*默认隐藏展品图片*/
+  }
+  
+  .exhibit.unlocked {
+    background-color: transparent;
+  }
+  
+  .exhibit.unlocked img {
+    opacity: 1;  /*游戏通过后展品可见*/
+  }
+  
+
+/* 设置图片容器的样式 */
+.image-gallery {
+    margin-top: 40px;
+    display: flex;             /* 使用 flexbox 排列图片 */
+    flex-wrap: wrap;           /* 允许换行 */
+    gap: 40px;                 /* 图片之间的间距，可以根据需要调整 */
+    justify-content: center;   /* 图片居中 */
+  }
+  
+  /* 设置图片的高度和宽度 */
+  .image-gallery img {
+    height: 600px;             /* 固定图片高度为 400px */
+    width: auto;               /* 宽度自动调整，保持比例 */
+    object-fit: cover;         /* 保持图片的比例，同时裁剪溢出的部分 */
+  }
+  
+  .buttom{
+    height: 100px;
+  }

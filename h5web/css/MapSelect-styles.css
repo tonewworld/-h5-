@@ -1,3 +1,54 @@
+
+body{
+  background-image:url(../graph/bg2.jpg) ;
+  background-size:100% 100%;
+}
+
+.nav{
+  width: 100%;
+  height: 70px;
+  background: #0e2a48;
+}
+.logo{
+  width: 100%;
+  height: 340px;
+  background:url(../graph/R-C.jpg);
+  background-size: 100% 340px;
+}
+
+.bowuguan{
+  color: white;
+  text-align: center;
+  justify-content: center;
+  font-size: 40px;
+}
+
+
+.lan{
+  top: 0px;
+  width: 100%;
+  height: 35px;
+}
+.lan a{
+  color: black;
+  float: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0px;
+  margin-right: 10px;
+}
+.lan .Puzzle {
+  color: red;
+  font-weight: bold;
+}
+
+.lan svg{
+  width: 25px;
+  height: 35px;
+}
+
+
 .content-container {  
     display: grid;  
    
@@ -13,11 +64,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     position: relative; /* 使子元素可以相对于它定位 */  
-   
-    
     width: 100%;  
-    
-    
 }  
   
 
