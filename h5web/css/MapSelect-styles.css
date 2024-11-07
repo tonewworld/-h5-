@@ -1,0 +1,146 @@
+.content-container {  
+    display: grid;  
+   
+    justify-content:center; 
+    width: 100%; /* 可以根据需要调整 */  
+    height: 100vh; /* 或者其他适当的高度值 */  
+    padding-top: 50px; /* 为了给导航留出空间 */  
+}  
+  
+.image-container {  
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative; /* 使子元素可以相对于它定位 */  
+   
+    
+    width: 100%;  
+    
+    
+}  
+  
+
+  
+.image-container-block {  
+    
+    border-radius: 5px; /* 圆角边框 */ 
+    
+    margin-left: 100px;
+    width: 25%;  
+    height: 25%;
+    overflow: hidden; /* 隐藏溢出的内容 */  
+    position: relative;
+}
+
+
+.image-container-block img{
+    width: 100%;
+    height: 100%;
+   object-fit: cover;
+
+
+}
+.image-container-block-button {  
+    justify-content: center;
+    display: flex;  
+    width: 100%; /* 填充父容器的宽度 */  
+    position: absolute; /* 绝对定位到父容器的底部 */  
+    bottom: 0;  
+    left: 0;  
+    padding: 0; /* 移除内边距 */  
+    box-sizing: border-box; /* 确保padding不会增加容器的宽度 */  
+    background-color: rgba(255, 255, 255, 0.8); /* 半透明背景，可以根据需要调整 */
+}
+
+/* 设置按钮的样式 */  
+.image-container-block button {  
+    
+    flex-grow: 0; /* 不允许按钮增长以填充额外空间 */  
+    height: 50px; /* 设置固定高度，可以根据需要调整 */  
+    padding: 10px;  
+    
+    color: black; /* 白色文字 */  
+    cursor: pointer; /* 鼠标悬停时显示为手形 */  
+    font-size: 14px; /* 设置字体大小 */  
+    border-radius: 0; /* 移除圆角边框，使按钮边缘与图片边缘对齐 */  
+    transition: background-color 0.3s ease; /* 添加背景色过渡效果 */  
+    background-color: transparent; /* 透明背景 */  
+    border: none; /* 移除边框 */  
+    margin-right: 5px; /* 为按钮之间添加一点间距，最后一个按钮不需要右边距 */  
+}
+
+
+
+.image-container-block-button button:hover{
+    background-color: rgba(189, 187, 187, 0.8); /* 半透明背景，鼠标悬停时 */  
+}
+.image-container-block:hover{
+
+    transform: scale(1.25);
+    box-shadow:0 25px 40px rgba(0, 0, 0, 0.5) ;
+}
+
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* 设置背景为半透明黑色 */
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px; /* 限制最大宽度 */
+    font-family: 'Arial', sans-serif; /* 设置字体 */
+  }
+  
+  .modal-content h2 {
+    color: #333;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .modal-content ul {
+    list-style-type: disc; /* 列表项前使用圆点 */
+    margin-left: 20px; /* 增加左边距 */
+  }
+  
+  .modal-content li {
+    margin-bottom: 5px; /* 列表项间距 */
+  }
+  
+  .modal-content blockquote {
+    font-style: italic; /* 斜体 */
+    color: #666;
+    padding: 10px;
+    border-left: 5px solid #666;
+    margin: 20px 0;
+  }
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.custom-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
