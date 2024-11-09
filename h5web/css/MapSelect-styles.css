@@ -31,12 +31,12 @@ body{
 }
 .lan a{
   color: black;
-  float: right;
+  float: left;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 0px;
-  margin-right: 10px;
+  margin-left: 10px;
 }
 .lan .Puzzle {
   color: red;

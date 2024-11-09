@@ -8,13 +8,13 @@ body{
     height: 35px;
 }
 .lan a{
-    color: white;
-    float: right;
+    color: black;
+    float: left;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 0px;
-    margin-right: 10px;
+    margin-left: 10px;
 }
 .lan .Exhibition {
     color: red;
